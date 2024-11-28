@@ -1,15 +1,23 @@
 pipeline {
     agent any
+    environment {
+        FLAG = true  // Set the flag to control stage execution
+    }
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Building...'
                 // Add your build commands here
             }
         }
         stage('Test') {
+            when {
+                expression {
+                    return FLAG == true  // Only run this stage if FLAG is true
+                }
+            }
             steps {
-                echo 'Testing..'
+                echo 'Testing...'
                 // Add your test commands here
             }
         }

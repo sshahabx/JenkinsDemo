@@ -30,6 +30,8 @@ pipeline {
         failure{
           echo 'Post action if build failed'
         }
+
+      }
         
   }
 }
